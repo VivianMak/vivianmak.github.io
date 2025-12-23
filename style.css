@@ -1,12 +1,12 @@
-/* 1. VARIABLES & RESET */
+/* 1. GLOBAL STYLES & THEME */
 :root {
     --bg-color: #ffffff;
     --text-color: #000000;
     --secondary-text: #6e6e73;
     --accent-color: #000000;
-    --border-color: rgba(0, 0, 0, 0.1);
-    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --side-padding: 8vw; /* Fluid padding for consistent alignment */
+    --border-color: #ebebeb;
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --container-padding: 8vw;
 }
 
 * {
@@ -16,27 +16,23 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* Makes navbar links slide smoothly */
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: var(--font-main);
-    line-height: 1.5;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
 }
 
-/* 2. LAYOUT ENGINE (The "Alignment" Fix) */
-/* Every major section uses these rules to stay perfectly in line */
-.navbar, 
-.hero-content, 
-.section-container, 
-footer {
-    max-width: 1600px;
+/* 2. LAYOUT CONTAINERS */
+.navbar, .hero-content, .section-container, footer {
+    max-width: 1400px;
     margin: 0 auto;
-    padding-left: var(--side-padding);
-    padding-right: var(--side-padding);
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
 }
 
 /* 3. NAVIGATION */
@@ -49,24 +45,23 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: saturate(180%) blur(20px);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
     z-index: 1000;
     border-bottom: 1px solid var(--border-color);
 }
 
 .logo {
-    font-weight: 700;
-    font-size: 1.2rem;
-    letter-spacing: -0.5px;
-    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: -1px;
+    font-size: 1.1rem;
 }
 
 .nav-links {
-    list-style: none;
     display: flex;
+    list-style: none;
+    gap: 32px;
     align-items: center;
-    gap: 40px;
 }
 
 .nav-links a {
@@ -74,7 +69,17 @@ footer {
     color: var(--text-color);
     font-size: 0.85rem;
     font-weight: 500;
-    transition: color 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: opacity 0.2s;
 }
 
-.nav-links
+.nav-links a:hover {
+    opacity: 0.6;
+}
+
+.cta-nav {
+    background: var(--text-color);
+    color: var(--bg-color) !important;
+    padding: 8px 16px;
+    border-radius: 4px;

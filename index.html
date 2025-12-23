@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">YOUR NAME</div>
+        <ul class="nav-links">
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="resume.pdf" target="_blank">Resume</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="mailto:hello@email.com" class="cta-nav">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content" style="display: flex; align-items: center; gap: 60px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;">
+                <h1>I build digital products that move the needle.</h1>
+                <p>Hi, I'm [Your Name]. A software engineer specializing in high-performance web applications and minimalist design systems. Based in [Your Location].</p>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn primary">View Work</a>
+                </div>
+            </div>
+            <div class="profile-image-container" style="flex: 0 0 300px;">
+                <img src="assets/profile.jpg" alt="Your Name" style="width: 100%; border-radius: 12px; filter: grayscale(100%);">
+            </div>
+        </div>
+    </header>
+
+    <section id="projects" class="section">
+        <div class="section-container">
+            <h2 class="section-title">Selected Projects</h2>
+            <div class="grid" style="grid-template-columns: repeat(3, 1fr);">
+                
+                <a href="projects/project-alpha.html" class="grid-item">
+                    <div class="item-img" style="background-image: url('assets/project-thumbnails/p1.jpg');"></div>
+                    <div class="item-info">
+                        <h3>Autonomous Systems</h3>
+                        <p>Web Interface • 2024</p>
+                    </div>
+                </a>
+
+                <a href="projects/project-beta.html" class="grid-item">
+                    <div class="item-img" style="background-image: url('assets/project-thumbnails/p2.jpg');"></div>
+                    <div class="item-info">
+                        <h3>Neural Network Viz</h3>
+                        <p>Data Science • 2023</p>
+                    </div>
+                </a>
+
+                <a href="projects/project-gamma.html" class="grid-item">
+                    <div class="item-img" style="background-image: url('assets/project-thumbnails/p3.jpg');"></div>
+                    <div class="item-info">
+                        <h3>E-Commerce Core</h3>
+                        <p>Full Stack • 2023</p>
+                    </div>
+                </a>
+
+                <a href="#" class="grid-item">
+                    <div class="item-img"></div>
+                    <div class="item-info">
+                        <h3>Next Project</h3>
+                        <p>Coming Soon</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section" style="background-color: #f9f9f9;">
+        <div class="section-container">
+            <h2 class="section-title">About Me</h2>
+            <div style="max-width: 800px;">
+                <p style="font-size: 1.2rem; margin-bottom: 20px; line-height: 1.8;">
+                    With over [X] years of experience in the tech industry, I focus on the intersection of human-centric design and scalable engineering. I believe that the best tools are the ones that disappear, allowing the user to focus entirely on their mission.
+                </p>
+                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--secondary-text);">
+                    Outside of coding, I'm deeply interested in robotics, sustainable energy, and minimalist architecture—interests that often find their way into the logic and aesthetic of my digital work. I'm currently looking for new opportunities to solve complex problems.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Your Name. Built with precision.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
