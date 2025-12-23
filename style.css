@@ -1,12 +1,10 @@
-/* 1. GLOBAL STYLES & THEME */
 :root {
-    --bg-color: #ffffff;
-    --text-color: #000000;
-    --secondary-text: #6e6e73;
-    --accent-color: #000000;
-    --border-color: #ebebeb;
-    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --container-padding: 8vw;
+    --bg: #ffffff;
+    --text: #000000;
+    --gray: #6e6e73;
+    --light-gray: #f5f5f7;
+    --border: rgba(0,0,0,0.1);
+    --padding-global: 8vw;
 }
 
 * {
@@ -16,70 +14,212 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Makes navbar links slide smoothly */
+    scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: var(--font-main);
-    line-height: 1.6;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
 }
 
-/* 2. LAYOUT CONTAINERS */
-.navbar, .hero-content, .section-container, footer {
+/* Layout Containers */
+.section-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding-left: var(--container-padding);
-    padding-right: var(--container-padding);
+    padding: 0 var(--padding-global);
 }
 
-/* 3. NAVIGATION */
+/* Navigation */
 .navbar {
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
+    width: 100%;
     height: 80px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--padding-global);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px);
-    z-index: 1000;
-    border-bottom: 1px solid var(--border-color);
 }
 
 .logo {
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: -1px;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 32px;
-    align-items: center;
+    gap: 40px;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: var(--text-color);
-    font-size: 0.85rem;
+    color: var(--text);
+    font-size: 0.8rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    transition: opacity 0.2s;
-}
-
-.nav-links a:hover {
-    opacity: 0.6;
+    letter-spacing: 0.1em;
 }
 
 .cta-nav {
-    background: var(--text-color);
-    color: var(--bg-color) !important;
+    background: var(--text);
+    color: white !important;
     padding: 8px 16px;
     border-radius: 4px;
+}
+
+/* Hero Section */
+.hero {
+    padding: 180px 0 100px 0;
+}
+
+.hero-flex {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: 30px;
+    font-weight: 900;
+}
+
+.hero-text p {
+    font-size: 1.25rem;
+    color: var(--gray);
+    margin-bottom: 40px;
+    max-width: 500px;
+}
+
+.hero-image {
+    flex: 0 0 350px;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 12px;
+    filter: grayscale(100%);
+    transition: filter 0.4s ease;
+}
+
+.hero-image img:hover {
+    filter: grayscale(0%);
+}
+
+.btn-primary {
+    background: var(--text);
+    color: white;
+    text-decoration: none;
+    padding: 16px 32px;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+/* Section Styling */
+.section {
+    padding: 100px 0;
+    scroll-margin-top: 80px; /* Crucial for jump links */
+}
+
+.label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    margin-bottom: 50px;
+}
+
+/* 3-Column Project Grid */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 24px;
+}
+
+.project-card {
+    text-decoration: none;
+    color: inherit;
+}
+
+.image-box {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-color: var(--light-gray);
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .image-box {
+    opacity: 0.8;
+}
+
+.project-meta h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.project-meta p {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+/* About Section Specifics */
+.about-bg {
+    background-color: var(--light-gray);
+}
+
+.about-content {
+    max-width: 800px;
+}
+
+.about-content p {
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+}
+
+footer {
+    padding: 60px 0;
+    border-top: 1px solid var(--border);
+    color: var(--gray);
+    font-size: 0.8rem;
+}
+
+/* Responsive Grid Adjustments */
+@media (max-width: 1024px) {
+    .project-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-flex { gap: 40px; }
+}
+
+@media (max-width: 768px) {
+    .hero-flex { flex-direction: column-reverse; text-align: center; }
+    .hero-text p { margin: 0 auto 40px auto; }
+    .project-grid { grid-template-columns: 1fr; }
+    .nav-links { gap: 20px; }
+}
