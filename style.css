@@ -1,133 +1,55 @@
-:root {
-    --bg-color: #000000;
-    --text-color: #ffffff;
-    --accent-color: #f5f5f7;
-    --secondary-text: #86868b;
-    --font-main: 'Inter', sans-serif;
+/* Layout Constrainer - Keeps everything in a vertical line */
+.navbar, .hero, .section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: 5vw;
+    padding-right: 5vw;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: var(--font-main);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-/* Navigation */
+/* Navbar Fix */
 .navbar {
     position: fixed;
     top: 0;
-    width: 100%;
-    padding: 20px 50px;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
+    height: 80px;
     align-items: center;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
     z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.logo {
-    font-weight: 800;
-    letter-spacing: 2px;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    transition: opacity 0.3s;
-}
-
-.cta-nav {
-    background: white;
-    color: black !important;
-    padding: 8px 16px;
-    border-radius: 4px;
-}
-
-/* Hero Section */
+/* HERO Fix - Ensure text aligns with the grid below */
 .hero {
-    height: 100vh;
+    height: 80vh;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('hero-bg.jpg');
-    background-size: cover;
-    background-position: center;
+    text-align: left; /* Changed from center to align with 'Work' title */
 }
 
-.hero-content h1 {
-    font-size: clamp(3rem, 8vw, 6rem);
-    font-weight: 900;
-    letter-spacing: -2px;
-    margin-bottom: 20px;
-}
-
-.hero-content p {
-    color: var(--secondary-text);
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-}
-
-.btn {
-    padding: 15px 35px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s;
-    border: 1px solid white;
-    margin: 0 10px;
-}
-
-.btn.primary { background: white; color: black; }
-.btn.secondary { background: transparent; color: white; }
-
-/* Work Grid */
-.section { padding: 100px 50px; }
-.section-title { font-size: 0.8rem; color: var(--secondary-text); letter-spacing: 3px; margin-bottom: 50px; }
-
+/* GRID Alignment Fix */
 .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* Tighter gap like Figure.ai */
 }
 
-.grid-item {
-    cursor: pointer;
-    transition: transform 0.5s ease;
-}
-
-.grid-item:hover { transform: scale(0.98); }
-
-.item-img {
-    height: 500px;
-    background-color: #1a1a1a;
-    background-size: cover;
-    background-position: center;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-.item-info h3 { font-size: 1.5rem; }
-.item-info p { color: var(--secondary-text); }
-
+/* Mobile Visibility Fix */
 @media (max-width: 768px) {
-    .grid { grid-template-columns: 1fr; }
-    .navbar { padding: 20px; }
+    .nav-links {
+        gap: 15px;
+    }
+    
+    .nav-links a {
+        font-size: 0.75rem; /* Shrink text so it fits on mobile */
+    }
+
+    .grid {
+        grid-template-columns: 1fr; /* Stack projects on top of each other */
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
 }
