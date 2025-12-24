@@ -57,8 +57,8 @@ body {
 }
 
 .logo {
-    font-weight: 500;
-    letter-spacing: 0.8px;
+    font-weight: 600;
+    letter-spacing: 0.75px;
     font-size: 1.2rem;
 }
 
@@ -218,7 +218,7 @@ body {
 } */
 
 .about-content p {
-    font-size: 0.9rem;       /* Made it smaller (default is usually 1rem) */
+    font-size: 1rem;       /* Made it smaller (default is usually 1rem) */
     color:#333333;     /* Uses your darker gray variable */
     /* OR use a specific hex code for "Darker Gray": color: #333333; */
     margin-bottom: 24px;
