@@ -210,9 +210,17 @@ body {
     max-width: 800px;
 }
 
-.about-content p {
-    font-size: 1.5rem;
+/* .about-content p {
+    font-size: 1rem;
     margin-bottom: 24px;
+} */
+
+.about-content p {
+    font-size: 0.9rem;       /* Made it smaller (default is usually 1rem) */
+    color:#333333;     /* Uses your darker gray variable */
+    /* OR use a specific hex code for "Darker Gray": color: #333333; */
+    margin-bottom: 24px;
+    line-height: 1.6;        /* Optional: adds breathing room between lines */
 }
 
 footer {
