@@ -94,6 +94,8 @@ body {
 .cta-nav {
     background: #000000;
     color: #ffffff !important;
+    padding: 8px 16px;
+    border-radius: 4px;
 }
 
 .cta-nav:hover {
