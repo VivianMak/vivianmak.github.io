@@ -78,11 +78,26 @@ body {
     letter-spacing: 0.1em;
 }
 
-.cta-nav {
+/* The hover state */
+.nav-links a:hover {
+    color: #000000; /* Turns pure black */
+}
+
+/* .cta-nav {
     background: var(--text);
     color: white !important;
     padding: 8px 16px;
     border-radius: 4px;
+} */
+
+/* Optional: Make the active link or the "Contact" button stay black */
+.cta-nav {
+    background: #000000;
+    color: #ffffff !important;
+}
+
+.cta-nav:hover {
+    background: #333333; /* Dark gray on hover for the button */
 }
 
 /* Hero Section */
@@ -122,7 +137,7 @@ body {
 .hero-image img {
     width: 100%;
     border-radius: 12px;
-    filter: saturate(0.8);
+    filter: none;
 }
 
 .btn-primary {
