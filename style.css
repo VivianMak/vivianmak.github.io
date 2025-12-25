@@ -177,7 +177,7 @@ body {
     color: inherit;
 }
 
-.image-box {
+/* .image-box {
     width: 100%;
     aspect-ratio: 4 / 3;
     background-color: var(--light-gray);
@@ -187,11 +187,77 @@ body {
     margin-bottom: 20px;
     border: 1px solid var(--border);
     transition: opacity 0.3s ease;
+} */
+
+/* .project-card:hover .image-box {
+    opacity: 0.8;
+} */
+
+/* --- ADDED NEW IMAGE-BOX & OVERLAY LOGIC --- */
+
+.image-box {
+    position: relative;        /* Required to position overlay inside */
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-color: #000;    /* Background for when image dims */
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;          /* Keeps zoom and overlay within corners */
+    border: 1px solid var(--border);
 }
 
-.project-card:hover .image-box {
-    opacity: 0.8;
+/* Added styling for the <img> tag inside the box */
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.5s ease, transform 0.5s ease;
 }
+
+/* The dark gray overlay container */
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 30, 30, 0.7); /* Dark gray tint */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;               /* Hidden initially */
+    transition: opacity 0.4s ease;
+    z-index: 2;
+}
+
+/* The white text inside the overlay */
+.overlay-text {
+    color: #ffffff;
+    text-align: center;
+}
+
+.overlay-text p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 0;         /* Overriding general p margins */
+}
+
+/* HOVER TRIGGERS */
+
+/* 1. Gray out image on hover */
+.project-card:hover img {
+    filter: grayscale(100%) brightness(0.4);
+    transform: scale(1.05);   /* Optional subtle zoom */
+}
+
+/* 2. Fade in overlay text on hover */
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+/* --- [CONTINUE WITH REST OF FILE] --- */
 
 .project-meta h3 {
     font-size: 1.1rem;
