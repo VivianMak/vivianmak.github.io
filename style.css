@@ -60,6 +60,13 @@ body {
     font-weight: 600;
     letter-spacing: 0.75px;
     font-size: 1.2rem;
+    text-decoration: none; 
+    color: var(--text);  
+}
+
+/* Optional: Keep it black even after it's been clicked */
+.logo:visited {
+    color: var(--text);
 }
 
 .nav-links {
