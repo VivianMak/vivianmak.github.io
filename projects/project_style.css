@@ -5,6 +5,25 @@
     --gray: #6e6e73;
     --light-gray: #f5f5f7;
     --border: rgba(0,0,0,0.1);
+    --padding-global: 8vw;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* Hero for Project Page */
@@ -28,7 +47,7 @@
     margin-bottom: 40px;
 }
 
-/* Quick Specs Bar (Figure-style technical highlights) */
+/* Quick Specs Bar (Figure-style technical highlights)
 .project-specs {
     display: flex;
     gap: 60px;
@@ -49,7 +68,7 @@
 .spec-item .value {
     font-weight: 600;
     font-size: 1rem;
-}
+} */
 
 /* Main Content Layout */
 .project-content {
