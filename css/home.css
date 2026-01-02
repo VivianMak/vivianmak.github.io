@@ -18,14 +18,14 @@
     color: var(--dark-gray);
     line-height: 1;
     letter-spacing: 0.01em;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     font-weight: 900;
 }
 
 .hero-text p {
     font-size: 1.1rem;
     color: var(--gray);
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     max-width: 600px;
 }
 
@@ -87,7 +87,7 @@
 }
 
 /* The dark gray overlay container */
-.project-card__overlay {
+.project-card-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -104,41 +104,44 @@
 }
 
 /* The white text inside the overlay */
-.project-card__overlay-text {
+.project-card-overlay-text {
     color: var(--white);
     text-align: center;
 }
 
-.project-card__overlay-text p {
+.project-card-overlay-text p {
     font-size: 0.9rem;
     line-height: 1.4;
-    margin-bottom: 0;         /* Overriding general p margins */
+    margin-bottom: 0;
 }
 
-/* HOVER TRIGGERS */
+/* -------------------------
+   Hover Effects
+------------------------- */
 
-/* 1. Gray out image on hover */
+/* 1. Gray out + zoom image on hover */
 .project-card:hover img {
     filter: grayscale(100%) brightness(0.4);
-    transform: scale(1.05);   /* Optional subtle zoom */
+    transform: scale(1.05);
 }
 
-/* 2. Fade in overlay text on hover */
-.project-card:hover .project-overlay {
+/* 2. Show overlay on hover */
+.project-card:hover .project-card-overlay {
     opacity: 1;
 }
 
 /* --- [CONTINUE WITH REST OF FILE] --- */
 
 .project-meta h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
+    color: var(--dark-gray);
 }
 
-.project-meta p {
+/* .project-meta p {
     color: var(--gray);
     font-size: 0.9rem;
-}
+} */
 
 /* About Section Specifics */
 .about-bg {
