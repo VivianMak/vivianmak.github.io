@@ -57,13 +57,13 @@
 
 .cta-nav {
     background: #000000;
-    color: #ffffff;
+    color: var(--white) !important;
     padding: 8px 16px;
     border-radius: 4px;
 }
 
 .cta-nav:hover {
-    background: #333333; 
+    background: var(--dark-gray); 
 }
 
 /* Footer Containers */
