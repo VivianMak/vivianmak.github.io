@@ -18,16 +18,17 @@
 }
 
 .project-hero-text h1 {
-    font-size: clamp(2rem, 6vw, 4.5rem);
+    font-size: clamp(1.5rem, 6vw, 4.5rem);
     color: var(--dark-gray);
-    line-height: 1;
+    line-height: 1.1;
     letter-spacing: 0.01em;
     margin-bottom: 30px;
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .project-hero-text p {
     font-size: 1rem;
+    line-height: 1.6;
     color: var(--gray);
     margin-bottom: 40px;
 }
@@ -66,17 +67,17 @@
 }
 
 .project-text-block h2 {
-    font-size: 1rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.3em;
     color: var(--dark-gray);
     margin-bottom: 20px;
     display: block;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .project-text-block p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.6;
     color: var(--gray);
     margin-bottom: 24px;
