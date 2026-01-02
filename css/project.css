@@ -40,31 +40,30 @@
 ------------------------- */
 .project-content {
     padding: 120px 0;
-    text-align: center;
 }
 
 .project-content .section-container {
     max-width: 1400px; 
+    margin-left: auto;
+    margin-right: auto; 
 }
 
 /* -------------------------
    Project Chapters / Sections
 ------------------------- */
-.content-grid {
-    display: grid;
-    /* grid-template-columns: 1fr 1fr; */
-    gap: 80px;
-    align-items: start;
-    /* margin-bottom: 120px; */
-    text-align: left;
+
+.project-chapter {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border);
+    scroll-margin-top: 80px;
 }
 
 /* Section Labels + Headings */
 .project-text-block {
     max-width: 1400px;
     margin-left: auto;
-    margin-right: auto; /* centers block horizontally */
-    text-align: left;   /* left-align content */
+    margin-right: auto; 
+    text-align: left;  
 }
 
 .project-text-block h2 {
