@@ -30,8 +30,6 @@ body {
 
 p {
     font-family: 'Source Sans Pro', sans-serif;
-
-    background-color: var(--bg);
     color: var(--text);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;

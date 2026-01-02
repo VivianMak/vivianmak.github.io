@@ -149,17 +149,10 @@
 }
 
 .about-content p {
-    color: var(--gray);
+    color: var(--dark-gray);
     font-size: 1.1rem;    
     margin-bottom: 24px;
     line-height: 1.6;     
-}
-
-footer {
-    padding: 60px 0;
-    border-top: 1px solid var(--border);
-    color: var(--gray);
-    font-size: 0.8rem;
 }
 
 /* Responsive Grid Adjustments */
