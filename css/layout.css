@@ -72,3 +72,10 @@
     margin: 0 auto;
     padding: 0 var(--padding-global);
 }
+
+/* Layout Containers */
+.section-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--padding-global);
+}
