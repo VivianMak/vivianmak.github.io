@@ -3,22 +3,46 @@
 
 /* Hero for Project Page */
 .project-hero {
-    padding-top: 180px;
-    padding-bottom: 60px;
-    border-bottom: 1px solid var(--border);
+    padding: 180px 0 100px 0;
+    /* border-bottom: 1px solid var(--border); */
 }
 
-.project-title-area h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+.project-hero-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    text-align: center;
+}
+
+.project-hero-text {
+    max-width: 700px;
+}
+
+/* Typography mirrors home hero */
+.project-hero-text h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: var(--dark-gray);
+    line-height: 1;
+    letter-spacing: 0.01em;
+    margin-bottom: 30px;
     font-weight: 900;
-    letter-spacing: -0.05em;
-    margin-bottom: 20px;
-    line-height: 1.1;
+}
+
+.project-hero-text p {
+    font-size: 1.5rem;
+    color: var(--gray);
+    margin-bottom: 40px;
 }
 
 /* Main Content Layout */
 .project-content {
-    padding: 100px 0;
+    padding: 120px 0;
+    text-align: center;
+}
+
+.project-content .section-container {
+    max-width: 800px; /* narrower = editorial feel */
 }
 
 .content-grid {
@@ -26,7 +50,8 @@
     grid-template-columns: 1fr 1fr;
     gap: 80px;
     align-items: start;
-    margin-bottom: 120px;
+    /* margin-bottom: 120px; */
+    text-align: left;
 }
 
 /* Section Labels + Headings */
@@ -48,16 +73,7 @@
     color: var(--text);
 }
 
-/* Project Chapters */
-.project-chapter {
-    padding: 80px 0;
-    border-bottom: 1px solid var(--border);
-    scroll-margin-top: 80px;
-}
 
-.project-chapter:last-child {
-    border-bottom: none;
-}
 
 /* Full-width media */
 .full-media {
@@ -86,5 +102,19 @@
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
+    .project-hero-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .project-hero-text p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .content-grid {
-        grid-
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+}
