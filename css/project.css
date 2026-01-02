@@ -24,6 +24,7 @@
     letter-spacing: 0.01em;
     margin-bottom: 30px;
     font-weight: 700;
+    text-transform: uppercase;
 }
 
 .project-hero-text p {
@@ -51,7 +52,7 @@
 ------------------------- */
 .content-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
     gap: 80px;
     align-items: start;
     /* margin-bottom: 120px; */
@@ -71,6 +72,7 @@
     text-transform: uppercase;
     letter-spacing: 0.3em;
     color: var(--dark-gray);
+    margin-bottom: 40px;
     margin-bottom: 20px;
     display: block;
     font-weight: 600;
