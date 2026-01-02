@@ -22,7 +22,7 @@
     color: var(--dark-gray);
     line-height: 1.1;
     letter-spacing: 0.01em;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     font-weight: 900;
     text-transform: uppercase;
 }
@@ -31,7 +31,7 @@
     font-size: 1rem;
     line-height: 1.6;
     color: var(--gray);
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 
@@ -71,7 +71,7 @@
     text-transform: uppercase;
     letter-spacing: 0.3em;
     color: var(--dark-gray);
-    margin-bottom: 40px;
+    margin-top: 40px;
     margin-bottom: 20px;
     display: block;
     font-weight: 700;
@@ -81,7 +81,7 @@
     font-size: 1rem;
     line-height: 1.6;
     color: var(--gray);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 
