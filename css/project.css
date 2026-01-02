@@ -1,10 +1,9 @@
-/* project.css */
-/* Styles specific to individual project pages */
-
-/* Hero for Project Page */
+/* -------------------------
+   Hero Section (Home-inspired)
+------------------------- */
 .project-hero {
     padding: 180px 0 100px 0;
-    /* border-bottom: 1px solid var(--border); */
+    border-bottom: 1px solid var(--border);
 }
 
 .project-hero-flex {
@@ -16,12 +15,11 @@
 }
 
 .project-hero-text {
-    max-width: 700px;
+    max-width: 1400px;
 }
 
-/* Typography mirrors home hero */
 .project-hero-text h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
     color: var(--dark-gray);
     line-height: 1;
     letter-spacing: 0.01em;
@@ -30,21 +28,27 @@
 }
 
 .project-hero-text p {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     color: var(--gray);
     margin-bottom: 40px;
 }
 
-/* Main Content Layout */
+
+/* -------------------------
+   Main Content Layout
+------------------------- */
 .project-content {
     padding: 120px 0;
     text-align: center;
 }
 
 .project-content .section-container {
-    max-width: 800px; /* narrower = editorial feel */
+    max-width: 1400px; 
 }
 
+/* -------------------------
+   Project Chapters / Sections
+------------------------- */
 .content-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -64,13 +68,28 @@
     display: block;
 }
 
-.text-block h2 {
+/* Text blocks with left-aligned headings + paragraphs */
+.project-text-block {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto; /* centers block horizontally */
+    text-align: left;   /* left-align content */
+}
+
+.project-text-block h2 {
     font-size: 2rem;
     line-height: 1.2;
     letter-spacing: -0.03em;
     font-weight: 800;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     color: var(--text);
+}
+
+.project-text-block p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 24px;
 }
 
 
@@ -101,6 +120,13 @@
 }
 
 /* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .project-content .content-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+    }
+}
+
 @media (max-width: 768px) {
     .project-hero-flex {
         flex-direction: column;
