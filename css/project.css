@@ -3,7 +3,6 @@
 ------------------------- */
 .project-hero {
     padding: 180px 0 100px 0;
-    border-bottom: 1px solid var(--border);
 }
 
 .project-hero-flex {
@@ -19,7 +18,7 @@
 }
 
 .project-hero-text h1 {
-    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    font-size: clamp(2rem, 6vw, 4.5rem);
     color: var(--dark-gray);
     line-height: 1;
     letter-spacing: 0.01em;
@@ -28,7 +27,7 @@
 }
 
 .project-hero-text p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--gray);
     margin-bottom: 40px;
 }
@@ -59,36 +58,27 @@
 }
 
 /* Section Labels + Headings */
-.project-section-title {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--gray);
-    margin-bottom: 20px;
-    display: block;
-}
-
-/* Text blocks with left-aligned headings + paragraphs */
 .project-text-block {
-    max-width: 700px;
+    max-width: 1400px;
     margin-left: auto;
     margin-right: auto; /* centers block horizontally */
     text-align: left;   /* left-align content */
 }
 
 .project-text-block h2 {
-    font-size: 2rem;
-    line-height: 1.2;
-    letter-spacing: -0.03em;
-    font-weight: 800;
-    margin-bottom: 16px;
-    color: var(--text);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--dark-gray);
+    margin-bottom: 20px;
+    display: block;
+    font-weight: 700;
 }
 
 .project-text-block p {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: var(--text);
+    color: var(--gray);
     margin-bottom: 24px;
 }
 
