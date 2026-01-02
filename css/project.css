@@ -28,7 +28,9 @@ body {
 
 /* Hero for Project Page */
 .project-hero {
-    padding: 160px 0 80px 0;
+    /* padding: 160px 0 80px 0; */
+    padding-top: 180px; 
+    padding-bottom: 60px;
     border-bottom: 1px solid var(--border);
 }
 
@@ -40,12 +42,12 @@ body {
     line-height: 1.1;
 }
 
-.project-subtitle {
+/* .project-subtitle {
     font-size: 1.25rem;
     color: var(--gray);
     max-width: 600px;
     margin-bottom: 40px;
-}
+} */
 
 /* Quick Specs Bar (Figure-style technical highlights)
 .project-specs {
@@ -120,6 +122,8 @@ body {
 .project-chapter {
     padding: 80px 0;
     border-bottom: 1px solid var(--border);
+    /* This ensures that when you jump to a section, it stops 80px early */
+    scroll-margin-top: 80px;
 }
 
 .project-chapter:last-child {
