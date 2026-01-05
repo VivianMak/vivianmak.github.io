@@ -2,15 +2,15 @@
    Hero Section (Home-inspired)
 ------------------------- */
 .project-hero {
-    padding: 180px 0 100px 0;
+    padding: 180px 0 20px 0;
 }
 
 .project-hero-flex {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: left;
     gap: 60px;
-    text-align: center;
+    text-align: left;
 }
 
 .project-hero-text {
@@ -41,7 +41,7 @@
    Main Content Layout
 ------------------------- */
 .project-content {
-    padding: 120px 0;
+    padding: 20px 0;
 }
 
 .project-content .section-container {
