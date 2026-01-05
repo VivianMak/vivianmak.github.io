@@ -13,7 +13,7 @@
     align-items: center;
 }
 
-/* .nav-container {
+.nav-container {
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
@@ -21,7 +21,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-} */
+}
 
 .nav-logo {
     font-weight: 600;
