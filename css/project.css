@@ -78,6 +78,17 @@
     font-weight: 700;
 }
 
+.project-text-block h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--dark-gray);
+    margin-top: 40px;
+    margin-bottom: 20px;
+    display: block;
+    font-weight: 700;
+}
+
 .project-text-block p {
     font-size: 1rem;
     line-height: 1.6;
