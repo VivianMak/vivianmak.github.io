@@ -100,15 +100,13 @@
 
 /* Full-width media */
 .full-media {
-    width: 100%;
     margin: 60px 0;
-    border-radius: 12px;
-    overflow: hidden;
 }
 
 .full-media img,
 .full-media video {
     width: 100%;
+    border-radius: 5px;
     display: block;
 }
 
