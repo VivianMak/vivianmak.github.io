@@ -18,13 +18,13 @@
 }
 
 .project-hero-text h1 {
-    font-size: clamp(1.75rem, 3vw, 2rem);
+    font-size: clamp(2rem, 2.25rem, 3rem);
     color: var(--dark-gray);
     line-height: 2;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
     margin-top: 60px;
     margin-bottom: 40px;
-    font-weight: 700;
+    font-weight: 800;
     text-transform: uppercase;
 }
 
@@ -111,10 +111,10 @@
 
 .media-grid img,
 .media-grid video {
-    height: auto;           /* all images same height */
-    width: 100%;             /* maintain aspect ratio */
+    flex: 1 1 auto;           /* allow images to grow/shrink proportionally */
+    max-width: 100%;          /* don't exceed container */
+    height: auto;             /* maintain aspect ratio */
     display: block;
-    object-fit: contain;     /* prevent cropping */
     border-radius: 5px;
 }
 
