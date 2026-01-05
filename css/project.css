@@ -41,7 +41,7 @@
    Main Content Layout
 ------------------------- */
 .project-content {
-    padding: 20px 0;
+    padding: 5px 0;
 }
 
 .project-content .section-container {
@@ -111,8 +111,8 @@
 
 .media-grid img,
 .media-grid video {
-    height: 300px;           /* all images same height */
-    width: auto;             /* maintain aspect ratio */
+    height: auto;           /* all images same height */
+    width: 100%;             /* maintain aspect ratio */
     display: block;
     object-fit: contain;     /* prevent cropping */
     border-radius: 5px;
