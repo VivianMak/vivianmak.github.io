@@ -18,13 +18,13 @@
 }
 
 .project-hero-text h1 {
-    font-size: clamp(1.1rem, 3vw, 2rem);
+    font-size: clamp(1.75rem, 3vw, 2rem);
     color: var(--dark-gray);
-    line-height: 1.1;
-    letter-spacing: 0.03em;
+    line-height: 2;
+    letter-spacing: 0.05em;
     margin-top: 60px;
     margin-bottom: 40px;
-    font-weight: 900;
+    font-weight: 700;
     text-transform: uppercase;
 }
 
@@ -79,7 +79,7 @@
     font-weight: 700;
 }
 
-.project-text-block h3 {
+/* .project-text-block h3 {
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.3em;
@@ -88,7 +88,7 @@
     margin-bottom: 20px;
     display: block;
     font-weight: 700;
-}
+} */
 
 .project-text-block p {
     font-size: 1rem;
