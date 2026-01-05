@@ -102,9 +102,11 @@
 /* Full-width media grid */
 .media-grid {
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 24px;
     margin: 60px auto;
     width: 100%;
+    align-items: start; 
 }
 
 .media-grid--1 {
@@ -122,9 +124,10 @@
 .media-grid img,
 .media-grid video {
     width: 100%;
+    height: auto;
     display: block;
     border-radius: 5px;
-    object-fit: cover;
+    /* object-fit: cover; */
 }
 
 .full-media iframe {
