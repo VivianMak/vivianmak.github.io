@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Gaussian Splatting | Vivian Mak</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/project.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="https://vivianmak.github.io/" class="nav-logo">Vivian Mak</a>
+            <ul class="nav-links">
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../assets/Vivian_Mak_Resume.pdf" target="_blank">Resume</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="mailto:vmak@olin.edu" class="cta-nav">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Project Intro -->
+    <header class="project-hero">
+        <div class="section-container">
+            <div class="project-hero-flex">
+                <div class="project-hero-text">
+                    <h1>3D Gaussian Splatting</h1>
+                    <p>
+                        Using gaussian splatting to reconstruct an object.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Project Content -->
+    <main class="project-content">
+
+        <div class="section-container">
+
+            <section class="project-chapter">
+                <div class="content-grid">
+                    <div class="project-text-block">
+                        <h2>01 / Gaussian Splats</h2>
+                        <p>
+                            3D Gaussian Splatting allows photorealistic depictions of physical scenes to be recreated by encoding 2D images to create novel viewpoints. First, a point cloud is generated, using Structure-for-Motion, for each image in a dataset. For each point, a 3D gaussian is initialized at the center with the attributes opacity, covariance, mean, and an RGB color parameter. With each iteration of rendering, the gaussians are optimized to represent the scene geometry.
+                        </p>
+                        <p>
+                            This new field of research is extremely interesting because being able to render something as high resolution and as quickly assists researchers in studying areas impossible for humans to sustain life for an extended period of time.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="project-chapter">
+                <div class="content-grid">
+                    <div class="project-text-block">
+                        <h2>02 / Demo</h2>
+                        <p>
+                            I performed a 3D Gaussian Splat of a classroom following this repo. This scene is trained on 84 frames and rendered with 7,000 point clouds. Some interesting aspects to note are the rendered details on features I didn't mean to capture in the video. For example, the high resolution writing on the chalkboard in the background and the captured fur detailing of the stuffed animal!
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2025 Vivian Mak.</p>
+            <div class="footer-icons">
+                <a href="https://github.com/VivianMak" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/vivianzmak" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:vmak@olin.edu" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
