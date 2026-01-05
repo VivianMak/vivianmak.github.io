@@ -51,7 +51,13 @@
                     <div class="project-text-block">
                         <h2>01 / The System</h2>
                         <p>
-                            Short Description
+                            Insert system diagram imge
+                        </p>
+                        <p>
+                            Errors tend to accumulate when working in a multi-agent system or even during internal measurements. When the goal is collision avoidance, obtaining an accurate pose estimate becomes critical. The state estimation sub-pipeline utilizes an Extended Kalman Filter to combine pose estimates from wheel odometry data and visual odometry, resulting in greater accuracy.
+                        </p>
+                        <p>
+                            A decentralized path planner allows each robot to independently plan and adjust its path as information is shared across the network. The path planning sub-pipeline discretizes the environment and uses the A Star algorithm to compute the shortest path to the goal. The next planned step and current pose estimate are shared across the network, establishing a hierarchy for robot navigation
                         </p>
                     </div>
                 </div>
@@ -63,7 +69,8 @@
                     <div class="project-text-block">
                         <h2>02 / Monocular Visual Odometry</h2>
                         <p>
-                            Paragraph
+                            This algorithm utilizes a single mounted camera to generate a pose estimate for each robot in the fleet. Visual odometry follows several key steps, but the use of a single camera introduces a critical system flaw. Photogrammetry-based pose extraction requires a depth map (typically obtained through a stereo vision system with two cameras) which is essential for determining rotation and translation between frames.
+
                         </p>
                     </div>
                 </div>
