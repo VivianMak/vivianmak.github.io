@@ -126,6 +126,12 @@
     object-fit: cover;
 }
 
+.full-media iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 5px;
+}
+
 /* Back Link */
 .back-link {
     display: inline-block;
