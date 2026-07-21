@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pose Graph Optimization | Vivian Mak</title>
+    <title>Autonomous Vehicle Navigation | Vivian Mak</title>
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../css/layout.css">
     <link rel="stylesheet" href="../../css/project.css">
@@ -30,14 +30,14 @@
         <div class="section-container">
             <div class="project-hero-flex">
                 <div class="project-hero-text">
-                    <h1>Pose Graph Optimization</h1>
+                    <h1>Autonomous Vehicle Navigation</h1>
 
                     <p>
-                        Developing a 2.5D pose-graph optimization (for SLAM) C++ pipeline from scratch.
+                        In this project, I followed the online course (<a href="https://www.coursera.org/learn/intro-self-driving-cars" target="_blank">Introduction to Self-Driving Cars</a>) to develop an autonomous vehicle navigation algorithm in CARLA simulator utilizing PID control for lateral and longitudinal error correction to ensuring smooth and accurate navigation. A physics-based approach was employed to model vehicle dynamics, capturing the real-world effects of movement and control inputs.
                     </p>
 
                     <div class="media-grid">
-                        <img src="images/pose_graph_01.jpg" alt="Pose graph optimization for SLAM">
+                        <img src="images/autonomous_vehicles_02.png" alt="Snapshot of the racetrack simulation in CARLA">
                     </div>
                 </div>
             </div>
@@ -53,8 +53,28 @@
             <section class="project-chapter">
                 <div class="content-grid">
                     <div class="project-text-block">
+                        <h2>01 / Simulation</h2>
                         <p>
-                            Work in progress... Check out my <a href="https://github.com/VivianMak/pose_graph_optimization_for_SLAM" target="_blank">GitHub repo</a> for updates!
+                            Below are visualizations from a final simulation run with a racetrack.
+                        </p>
+
+                        <div class="media-grid">
+                            <img src="images/autonomous_vehicles_03.png" alt="Comparing predicted v measured data for path and speed profile">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="project-chapter">
+                <div class="content-grid">
+                    <div class="project-text-block">
+                        <h2>02 / Looking Ahead</h2>
+                        <p>
+                            Implementing a collision warning system estimating a 3D drivable space, using semantic lane estimation, and object detection using semantic segmentation.
+                        </p>
+                        <p>
+                            Check out the <a href="https://github.com/VivianMak/Visual-Perception-for-Autonomous-Vehicles" target="_blank">GitHub repo</a>.
                         </p>
                     </div>
                 </div>

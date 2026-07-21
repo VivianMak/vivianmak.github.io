@@ -32,12 +32,32 @@
                 <div class="project-hero-text">
                     <h1>Fleet Robotics</h1>
 
-                    
-
                     <p>
-                        Controlling a fleet of robots with a multi-agent communication, decentralized path planner, and sensor fusion module.
+                        In this project, I worked in a 4-person team over 4 weeks with the following objective:
+                    </p>
+                    <p>
+                        Develop a decentralized path planner for a fleet of robots, integrating sensor fusion techniques and multi-agent communication for autonomous fleet navigation.
                     </p>
 
+                    <div class="full-media">
+                        <iframe
+                            width="100%"
+                            height="600"
+                            src="https://www.youtube.com/embed/cGe1KRgT8iM"
+                            title="Fleet navigating a course with red dots as obstacles"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <div class="media-grid">
+                        <img src="images/fleet_robotics_02.jpg" alt="My team and our fleet of robots">
+                    </div>
+
+                    <p>
+                        Check out my team and our <a href="https://itannermahncke.github.io/fleet_robotics/" target="_blank">project website</a>!
+                    </p>
                 </div>
             </div>
         </div>
@@ -54,14 +74,20 @@
                     <div class="project-text-block">
                         <h2>01 / The System</h2>
                         <p>
-                            Insert system diagram imge
+                            To understand the entire fleet communication holistically, we first drafted a diagram of the different nodes for the local software of a single robot (Neato). Over the course of the 4 weeks, we have adjusted this system diagram to the following. This pipeline includes two main parts:
                         </p>
                         <p>
+                            <strong>State Estimation</strong><br>
                             Errors tend to accumulate when working in a multi-agent system or even during internal measurements. When the goal is collision avoidance, obtaining an accurate pose estimate becomes critical. The state estimation sub-pipeline utilizes an Extended Kalman Filter to combine pose estimates from wheel odometry data and visual odometry, resulting in greater accuracy.
                         </p>
                         <p>
-                            A decentralized path planner allows each robot to independently plan and adjust its path as information is shared across the network. The path planning sub-pipeline discretizes the environment and uses the A Star algorithm to compute the shortest path to the goal. The next planned step and current pose estimate are shared across the network, establishing a hierarchy for robot navigation
+                            <strong>Path Planning</strong><br>
+                            A decentralized path planner allows each robot to independently plan and adjust its path as information is shared across the network. The path planning sub-pipeline discretizes the environment and uses the A Star algorithm to compute the shortest path to the goal. The next planned step and current pose estimate are shared across the network, establishing a hierarchy for robot navigation.
                         </p>
+
+                        <div class="media-grid">
+                            <img src="images/fleet_robotics_03.png" alt="Detailed system overview of a single robot (Neato)">
+                        </div>
                     </div>
                 </div>
             </section>
@@ -72,8 +98,39 @@
                     <div class="project-text-block">
                         <h2>02 / Monocular Visual Odometry</h2>
                         <p>
-                            This algorithm utilizes a single mounted camera to generate a pose estimate for each robot in the fleet. Visual odometry follows several key steps, but the use of a single camera introduces a critical system flaw. Photogrammetry-based pose extraction requires a depth map (typically obtained through a stereo vision system with two cameras) which is essential for determining rotation and translation between frames.
+                            This algorithm utilizes a single mounted camera to generate a pose estimate for each robot in the fleet. Visual odometry follows several key steps (highlighted), but the use of a single camera introduces a critical system flaw. Photogrammetry-based pose extraction requires a depth map (typically obtained through a stereo vision system with two cameras) which is essential for determining rotation and translation between frames.
+                        </p>
+                        <p>
+                            <strong>MVO Pipeline Overview</strong><br>
+                            1) Calibrate robot camera for intrinsic and extrinsic parameters<br>
+                            2) Image is received from the robot every 1 second<br>
+                            3) SIFT-based feature extraction<br>
+                            4) FLANN-based feature matching and filtered matches by distance threshold<br>
+                            5) Estimate motion with essential matrix decomposition<br>
+                            6) Publish a pose
+                        </p>
+                        <p>
+                            <strong>System Calibration</strong><br>
+                            Testing consisted of manually pushing the Neato 0.5m every 6 seconds and compared the recorded distance to the real distance. (A velocity of 0.083 m/s was just a magic number that worked the best with matching features between each frame.)
+                        </p>
+                        <p>
+                            Below is a graph showing the differences in the outputted X pose (in red) compared to each 0.5m in real life (in blue). There was a huge inconsistency in the output scaling and positive/negative sign for each test which seemed very unreliable.
+                        </p>
+                        <p>
+                            The first 8 test we performed used cv2.recoverPose() to extract the rotation and translation. In the second set of tests, we tried directly implementing the single value decomposition math to extract the matrices. With the random spikes, we decided to continue with the OpenCV function. The next step to extracting out the correct translation is to compute the scale in each image. Using this function has a certain scale ambiguity that we cannot control.
+                        </p>
+                        <p>
+                            The second set of calibration tests we performed was with the rotation matrix. Unlike the translation, this yielded very accurate results over time. In this calibration test, the real angle and computed angles were measured every 45 degrees going from 0 to 180 degrees clockwise and counter-clockwise. In the graph below, blue represents the manual movement of turning and the red is the output. The initial 45-90 degrees were very inaccurate as the estimation motion would always be significantly lower. However, as the Neato reaches 180 degrees, the angles would adjust to be more accurate, usually settling within 10 degrees.
+                        </p>
 
+                        <div class="media-grid">
+                            <img src="images/fleet_robotics_04.png" alt="Linear test">
+                            <img src="images/fleet_robotics_05.png" alt="Rotational test">
+                        </div>
+
+                        <p>
+                            <strong>Concluding Thoughts</strong><br>
+                            The MVO pipeline was able to output pose estimates that were occasionally within tolerances. However, in the end, this pipeline was not fully implemented due to the unpredictable errors and inaccuracy without depth maps. With more time, creating visualizations rather than command line debugging would be helpful in understanding where the errors lie.
                         </p>
                     </div>
                 </div>
@@ -86,7 +143,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-container">
-            <p>&copy; 2025 Vivian Mak.</p>
+            <p>&copy; 2026 Vivian Mak.</p>
             <div class="footer-icons">
                 <a href="https://github.com/VivianMak" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://linkedin.com/in/vivianzmak" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>

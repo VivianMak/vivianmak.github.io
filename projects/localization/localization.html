@@ -31,10 +31,18 @@
             <div class="project-hero-flex">
                 <div class="project-hero-text">
                     <h1>Robot Localization: A Particle Filter Approach</h1>
+
                     <p>
-                         A particle filter algorithm to perform state estimation and localization to determine the robot's true position on a map.
+                        Implement a particle filter algorithm to perform state estimation and localization to determine the robot's true position on a map.
                     </p>
 
+                    <div class="media-grid">
+                        <img src="images/localization_02.gif" alt="GIF generated from Rviz2 running the robot localizer on a map">
+                    </div>
+
+                    <p>
+                        Check out the <a href="https://github.com/VivianMak/robot_localization" target="_blank">GitHub repo</a>.
+                    </p>
                 </div>
             </div>
         </div>
@@ -51,12 +59,27 @@
                     <div class="project-text-block">
                         <h2>01 / Particle Filter</h2>
                         <p>
-                            Initialize a particle cloud based on initial 2D pose estimate 
+                            In this process I:
+                        </p>
+                        <ul>
+                            <li>Initialize a particle cloud based on initial 2D pose estimate</li>
+                            <li>Update particle pose with robot odometry data with Gaussian noise</li>
+                            <li>Update particle weights with laser scan and based on error of closest mapped object</li>
+                            <li>Normalize particle weights to sum to one</li>
+                            <li>Update estimated robot pose with mean particle weights</li>
+                            <li>Resample particles using a grid style way of taking the mean</li>
+                        </ul>
+
+                        <div class="media-grid">
+                            <img src="images/localization_03.png" alt="Particle filter localization on a map">
+                        </div>
+
+                        <p>
+                            After several iterations, the particles converge to a small area to estimate where the robot is.
                         </p>
                     </div>
                 </div>
             </section>
-
 
         </div>
 
@@ -65,7 +88,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-container">
-            <p>&copy; 2025 Vivian Mak.</p>
+            <p>&copy; 2026 Vivian Mak.</p>
             <div class="footer-icons">
                 <a href="https://github.com/VivianMak" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://linkedin.com/in/vivianzmak" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
