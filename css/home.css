@@ -115,6 +115,71 @@
     margin-bottom: 0;
 }
 
+/* Experience Section */
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.experience-item {
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+}
+
+.experience-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.experience-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.experience-header h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--dark-gray);
+}
+
+.experience-date {
+    font-size: 0.9rem;
+    color: var(--gray);
+    white-space: nowrap;
+}
+
+.experience-role {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--gray);
+    margin-bottom: 16px;
+}
+
+.experience-bullets {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.experience-bullets li {
+    font-size: 1rem;
+    color: var(--dark-gray);
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.experience-bullets li:last-child {
+    margin-bottom: 0;
+}
+
+.experience-bullets li:empty {
+    min-height: 1.6em;
+}
+
 /* -------------------------
    Hover Effects
 ------------------------- */
@@ -128,6 +193,16 @@
 /* 2. Show overlay on hover */
 .project-card:hover .project-card-overlay {
     opacity: 1;
+}
+
+/* Hobbies gallery tiles: no description overlay, so keep a gentle zoom only */
+.hobby-card {
+    cursor: default;
+}
+
+.hobby-card:hover img {
+    filter: none;
+    transform: scale(1.05);
 }
 
 /* --- [CONTINUE WITH REST OF FILE] --- */
