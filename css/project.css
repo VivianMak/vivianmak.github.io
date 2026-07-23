@@ -2,7 +2,7 @@
    Hero Section (Home-inspired)
 ------------------------- */
 .project-hero {
-    padding: 180px 0 20px 0;
+    padding: 140px 0 20px 0;
 }
 
 .project-hero-flex {
@@ -20,9 +20,9 @@
 .project-hero-text h1 {
     font-size: clamp(2rem, 2.25rem, 3rem);
     color: var(--dark-gray);
-    line-height: 2;
+    line-height: 1.2;
     letter-spacing: 0.03em;
-    margin-top: 60px;
+    margin-top: 0;
     margin-bottom: 40px;
     font-weight: 850;
     text-transform: uppercase;
@@ -99,7 +99,7 @@
 
 
 
-/* Full-width media grid */
+/* Media grid (inset narrower than the text column, even for multi-image rows) */
 .media-grid {
     display: flex;
     justify-content: center;
@@ -107,7 +107,7 @@
     flex-wrap: nowrap;       /* keep in single row */
     max-width: 1400px;
     margin: 60px auto;
-    width: 100%;
+    width: 85%;
     box-sizing: border-box;
 }
 
