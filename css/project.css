@@ -103,6 +103,7 @@
 .media-grid {
     display: flex;
     justify-content: center;
+    align-items: flex-start; /* don't stretch shorter images to match the tallest */
     gap: 24px;
     flex-wrap: nowrap;       /* keep in single row */
     max-width: 1400px;
@@ -119,11 +120,18 @@
     height: auto;             /* maintain aspect ratio */
     display: block;
     border-radius: 5px;
-    object-fit: cover;
+}
+
+.full-media {
+    max-width: 1400px;
+    margin: 60px auto;
+    width: 85%;
+    box-sizing: border-box;
 }
 
 .full-media iframe {
     width: 100%;
+    height: auto;
     aspect-ratio: 16 / 9;
     border-radius: 5px;
 }

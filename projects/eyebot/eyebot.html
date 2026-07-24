@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Gaussian Splatting | Vivian Mak</title>
+    <title>Eyebot | Vivian Mak</title>
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../css/layout.css">
     <link rel="stylesheet" href="../../css/project.css">
@@ -31,14 +31,10 @@
         <div class="section-container">
             <div class="project-hero-flex">
                 <div class="project-hero-text">
-                    <h1>3D Gaussian Splatting</h1>
-
-                    <div class="media-grid">
-                        <img src="images/g_cover.png" alt="3D Gaussian Splatting">
-                    </div>
+                    <h1>Eyebot</h1>
 
                     <p>
-                        This research project aims to gain insight on the topic of 3D Gaussian Splatting, understand its pipeline, and learn about its applications.
+                        As an R&amp;D Intern at Eyebot, I worked on the real-time computer vision pipeline behind the product's face perception system, focusing on glasses detection and stable face tracking.
                     </p>
                 </div>
             </div>
@@ -54,12 +50,12 @@
             <section class="project-chapter">
                 <div class="content-grid">
                     <div class="project-text-block">
-                        <h2>01 / Gaussian Splats</h2>
+                        <h2>01 / Glasses Detection</h2>
                         <p>
-                            The main premise of 3D Gaussian Splatting is to recreate photorealistic depictions of physical scenes by encoding 2D images to create novel viewpoints. First, a point cloud is generated, using Structure-for-Motion, for each image in the dataset. For each point, a 3D gaussian is initialized at the center with the attributes opacity, covariance, mean, and an RGB color parameter. With each iteration of rendering, the gaussians are optimized to represent the scene geometry.
+                            To personalize downstream perception, the first step in the pipeline was determining whether a user was wearing glasses. I built a classifier that operates on cropped eye and brow regions from each frame, using facial landmarks to normalize for head pose and distance from the camera before classification.
                         </p>
                         <p>
-                            This new field of research is extremely interesting because being able to render something as high resolution and as quickly assists researchers in studying areas impossible for humans to sustain life for an extended period of time.
+                            Because glasses vary widely in frame shape, thickness, and lens reflectivity, most of the effort went into curating a training set that captured a range of lighting conditions and glare, which were the leading cause of false negatives.
                         </p>
                     </div>
                 </div>
@@ -69,21 +65,13 @@
             <section class="project-chapter">
                 <div class="content-grid">
                     <div class="project-text-block">
-                        <h2>02 / Demo</h2>
+                        <h2>02 / Kalman Filtering for Face Tracking</h2>
                         <p>
-                            I performed a 3D Gaussian Splat of a classroom following <a href="https://github.com/graphdeco-inria/gaussian-splatting" target="_blank">this repo</a>. This scene is trained on 84 frames and rendered with 7,000 point clouds. Some interesting aspects to note are the rendered details on features I didn't mean to capture in the video. For example, the high resolution writing on the chalkboard in the background and the captured fur detailing of the stuffed animal!
+                            Raw facial landmark detections are noisy frame-to-frame, especially during fast head movement or brief occlusion. I implemented a Kalman filter to smooth the tracked face position and keypoints over time, using a constant-velocity motion model to predict each frame's pose and correcting with every new detection.
                         </p>
-
-                        <div class="full-media">
-                            <iframe
-                                width="100%"
-                                src="https://www.youtube.com/embed/8bxfMSPrZX4"
-                                title="3D Gaussian Splat of a classroom"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen>
-                            </iframe>
-                        </div>
+                        <p>
+                            This reduced jitter in the tracked region and kept tracking stable through short detection dropouts, which was critical for maintaining a consistent glasses-detection crop from frame to frame.
+                        </p>
                     </div>
                 </div>
             </section>
@@ -103,6 +91,8 @@
             </div>
         </div>
     </footer>
+
+    <script src="../../js/nav-scroll.js"></script>
 
 </body>
 </html>
