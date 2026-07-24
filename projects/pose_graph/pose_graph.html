@@ -38,7 +38,10 @@
                     </div>
 
                     <p>
-                        Developing a 2.5D pose-graph optimization (for SLAM) C++ pipeline from scratch.
+                        A full 2.5D pose-graph optimization pipeline for SLAM (Simultaneous Localization and Mapping), built from scratch in C++ as a Software Systems course project with Allan and Mo. The robot's trajectory is represented as a series of poses (nodes) connected by relative motion measurements (edges), and the optimizer corrects accumulated odometry drift by enforcing consistency across those constraints.
+                    </p>
+                    <p>
+                        The world is constrained to 2.5D &mdash; the robot moves on a plane while maintaining a full orientation (x, y, &theta;) &mdash; which reduces complexity while preserving the essential structure of real-world pose graph optimization. Check out the full write-up on my <a href="https://github.com/VivianMak/pose_graph_optimization_for_SLAM" target="_blank">GitHub repo</a>.
                     </p>
                 </div>
             </div>
@@ -54,9 +57,69 @@
             <section class="project-chapter">
                 <div class="content-grid">
                     <div class="project-text-block">
-                        <h2>01 / Status</h2>
+                        <h2>01 / Gathering Simulation Data</h2>
                         <p>
-                            Work in progress... Check out my <a href="https://github.com/VivianMak/pose_graph_optimization_for_SLAM" target="_blank">GitHub repo</a> for updates!
+                            To develop and test the algorithm, we needed odometry and LiDAR data. We generated it using the TurtleBot 4 simulator and ROS2, recording a ROSbag and writing a ROS2 node that saved the scan and odometry messages to a binary file we could read from directly.
+                        </p>
+                        <p>
+                            The simulated odometry and LiDAR are effectively perfect, so we injected artificial drift &mdash; small, accumulating, normally distributed offsets added to x and y at each measurement &mdash; to give the optimizer realistic error to correct.
+                        </p>
+
+                        <div class="media-grid">
+                            <img src="images/pose_graph_02.gif" alt="TurtleBot 4 driving in a square in simulation, used for data gathering">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-chapter">
+                <div class="content-grid">
+                    <div class="project-text-block">
+                        <h2>02 / Constructing the Pose Graph</h2>
+                        <p>
+                            Before optimization can begin, the raw odometry has to be converted into the underlying graph structure the solver operates on: a sequence of nodes with relative transformations between them stored as edges. This chain of constraints forms the "backbone" of the graph, encoding how the robot moved from one timestep to the next; loop-closure constraints from ICP are later added directly onto it.
+                        </p>
+                        <p>
+                            The structure is built from a few core data structures &mdash; <strong>Point</strong>, <strong>Pose</strong>, <strong>Edge</strong>, and <strong>Node</strong>. Each Node corresponds to one moment in time and stores the robot's estimated pose from odometry, while each Edge stores a 3&times;3 homogeneous transform encoding how one node's pose relates to another.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-chapter">
+                <div class="content-grid">
+                    <div class="project-text-block">
+                        <h2>03 / Transformations with ICP</h2>
+                        <p>
+                            Pose graph optimization needs two independent estimates of where the robot is. Odometry gives one directly. For the second, we align overlapping LiDAR scans using ICP (Iterative Closest Point): given two scans of approximately the same environment, ICP outputs a transform mapping the source scan into the destination scan's frame, creating a constraint between the two corresponding nodes.
+                        </p>
+                        <p>
+                            We implemented the point-to-plane variant: compute normals on the destination scan, seed the source scan with the odometry estimate, then repeatedly match each source point to its nearest destination neighbor, measure the error along that point's normal, and solve a least-squares system for the transform update &mdash; iterating until convergence.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-chapter">
+                <div class="content-grid">
+                    <div class="project-text-block">
+                        <h2>04 / Gauss-Newton Global Optimization</h2>
+                        <p>
+                            With the graph and its constraints in place, we solve the nonlinear least-squares problem with the Gauss-Newton algorithm. It back-propagates the noisy relative pose measurements across the whole graph to recover a globally consistent set of "real" poses, treating each timestep's laser scan as a source of truth and iteratively minimizing the error of overlapped points until convergence.
+                        </p>
+                        <p>
+                            Each iteration derives an error function for every adjacent pair of nodes, linearizes it with a first-order Taylor expansion around the current estimate, and computes the Jacobian of that error. These assemble into the global linear system <strong>H&Delta;x = &minus;b</strong>, which is solved for the pose update &Delta;x and applied across all nodes, repeating until the trajectory converges.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-chapter">
+                <div class="content-grid">
+                    <div class="project-text-block">
+                        <h2>05 / Next Steps</h2>
+                        <p>
+                            The immediate next step is visualizing the map reconstructed from laser-scan data to make remaining bugs easier to spot. Longer term, the goal is real-time SLAM &mdash; one promising direction is pre-allocating the exact memory the pipeline needs up front and running components concurrently to avoid cache overload.
                         </p>
                     </div>
                 </div>

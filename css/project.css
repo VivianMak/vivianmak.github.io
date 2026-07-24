@@ -114,12 +114,27 @@
 
 .media-grid img,
 .media-grid video {
-    flex: 1 1 auto;           /* allow images to grow/shrink proportionally */
     max-width: 100%;          /* don't exceed container */
     min-width: 0;
-    height: auto;             /* maintain aspect ratio */
     display: block;
     border-radius: 5px;
+}
+
+/* Single-image rows: show at natural aspect ratio, full width */
+.media-grid img:only-child,
+.media-grid video:only-child {
+    flex: 1 1 auto;
+    height: auto;
+}
+
+/* Multi-image rows: share one height so mixing portrait/landscape shots
+   doesn't leave one image squeezed much smaller than the others */
+.media-grid img:not(:only-child),
+.media-grid video:not(:only-child) {
+    flex: 1 1 0;
+    width: 100%;
+    height: clamp(200px, 26vw, 320px);
+    object-fit: cover;
 }
 
 .full-media {
@@ -188,5 +203,7 @@
     .media-grid img,
     .media-grid video {
         flex: 1 1 100%;    /* each image takes full row on mobile */
+        height: auto;      /* stacked single-column: show natural aspect ratio, no cropping */
+        object-fit: initial;
     }
 }
