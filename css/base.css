@@ -7,7 +7,7 @@
     --dark-gray: #333333;
     --dark-gray-tint: rgba(30, 30, 30, 0.7);
     --border: rgba(0,0,0,0.1);
-    --padding-global: 8vw;
+    --padding-global: 5vw;
 }
 
 * {
