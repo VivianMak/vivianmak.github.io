@@ -255,3 +255,118 @@
     outline: 2px solid var(--black);
     outline-offset: 3px;
 }
+/* More Projects — two suggestions at the bottom of each project page */
+.more-projects {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 80px 0 100px;
+    text-align: center;
+}
+
+.more-projects h2 {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin: 0 0 28px;
+}
+
+.more-projects-links {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.more-project-card {
+    position: relative;
+    flex: 0 1 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: var(--dark-gray);
+    text-decoration: none;
+    color: var(--white);
+}
+
+/* Cover image sits behind the label, cropped from the center of the image */
+.more-project-card img,
+.more-project-thumb--placeholder {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.more-project-card img {
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.more-project-thumb--placeholder {
+    background: linear-gradient(135deg, #3a3a3a, #1e1e1e);
+}
+
+.more-project-thumb--placeholder i {
+    display: none;
+}
+
+/* Scrim so the centered title stays readable over any image */
+.more-project-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    transition: background 0.2s ease;
+}
+
+.more-project-card:hover::after {
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.more-project-label {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 20px;
+}
+
+.more-project-title {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.more-project-label .arrow {
+    color: rgba(255, 255, 255, 0.85);
+    transition: transform 0.15s ease;
+    flex-shrink: 0;
+}
+
+.more-project-card:hover img {
+    transform: scale(1.05);
+}
+
+.more-project-card:hover .arrow {
+    transform: translateX(3px);
+}
+
+@media (max-width: 600px) {
+    .more-projects {
+        padding: 80px 0 60px;
+    }
+
+    .more-project-card {
+        flex: 1 1 100%;
+    }
+}
