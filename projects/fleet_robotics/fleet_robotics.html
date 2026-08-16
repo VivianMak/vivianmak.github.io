@@ -38,9 +38,6 @@
                     </div>
 
                     <p>
-                        In this project, I worked in a 4-person team over 4 weeks with the following objective:
-                    </p>
-                    <p>
                         Develop a decentralized path planner for a fleet of robots, integrating sensor fusion techniques and multi-agent communication for autonomous fleet navigation.
                     </p>
 
@@ -58,15 +55,6 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
                         </iframe>
-                    </div>
-
-                    <div class="media-grid">
-                        <img src="images/fleet_robotics_02.jpg" alt="My team and our fleet of robots">
-                    </div>
-
-                    <p>
-                        Check out my team and our <a href="https://itannermahncke.github.io/fleet_robotics/" target="_blank">project website</a>!
-                    </p>
                 </div>
             </div>
         </div>
@@ -83,7 +71,7 @@
                     <div class="project-text-block">
                         <h2>01 / The System</h2>
                         <p>
-                            To understand the entire fleet communication holistically, we first drafted a diagram of the different nodes for the local software of a single robot (Neato). Over the course of the 4 weeks, we have adjusted this system diagram to the following. This pipeline includes two main parts:
+                            Below is a diagram of the fleet communication system for the local software of a single robot (Neato). The system is designed to be decentralized, allowing each robot to independently plan and adjust its path as information is shared across the network. The system consists of two main sub-pipelines: state estimation and path planning.
                         </p>
                         <p>
                             <strong>State Estimation</strong><br>
@@ -91,7 +79,7 @@
                         </p>
                         <p>
                             <strong>Path Planning</strong><br>
-                            A decentralized path planner allows each robot to independently plan and adjust its path as information is shared across the network. The path planning sub-pipeline discretizes the environment and uses the A Star algorithm to compute the shortest path to the goal. The next planned step and current pose estimate are shared across the network, establishing a hierarchy for robot navigation.
+                            The path planning sub-pipeline discretizes the environment and uses the A Star algorithm to compute the shortest path to the goal. The next planned step and current pose estimate are shared across the network, establishing a hierarchy for robot navigation.
                         </p>
 
                         <div class="media-grid">
@@ -141,6 +129,19 @@
                             <strong>Concluding Thoughts</strong><br>
                             The MVO pipeline was able to output pose estimates that were occasionally within tolerances. However, in the end, this pipeline was not fully implemented due to the unpredictable errors and inaccuracy without depth maps. With more time, creating visualizations rather than command line debugging would be helpful in understanding where the errors lie.
                         </p>
+                    </div>
+                </div>
+            </section>
+
+			<section class="project-chapter">
+                <div class="content-grid">
+                    <div class="project-text-block">
+						<p>
+							Thank you to an amazing team and check out our <a href="https://itannermahncke.github.io/fleet_robotics/" target="_blank">project website</a>!
+						</p>
+						<div class="media-grid">
+							<img src="images/fleet_robotics_02.jpg" alt="My team and our fleet of robots">
+						</div>
                     </div>
                 </div>
             </section>
