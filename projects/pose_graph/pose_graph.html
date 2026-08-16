@@ -33,17 +33,14 @@
                 <div class="project-hero-text">
                     <h1>Pose Graph Optimization</h1>
 
-                    <div class="media-grid">
+                    <!-- <div class="media-grid">
                         <img src="images/pose_graph_01.jpg" alt="Pose graph optimization for SLAM">
-                    </div>
+                    </div> -->
 
                     <p>
-                        A full 2.5D pose-graph optimization pipeline for SLAM (Simultaneous Localization and Mapping), built from scratch in C++ as a Software Systems course project with Allan and Mo. The robot's trajectory is represented as a series of poses (nodes) connected by relative motion measurements (edges), and the optimizer corrects accumulated odometry drift by enforcing consistency across those constraints.
+                        A pose-graph optimization pipeline for 2.5D SLAM (Simultaneous Localization and Mapping), built from scratch in C++.
                     </p>
-                    <p>
-                        The world is constrained to 2.5D &mdash; the robot moves on a plane while maintaining a full orientation (x, y, &theta;) &mdash; which reduces complexity while preserving the essential structure of real-world pose graph optimization.
-                    </p>
-
+					<!-- <p>The robot's trajectory is represented as a series of poses (nodes) connected by relative motion measurements (edges), and the optimizer corrects accumulated odometry drift by enforcing consistency across those constraints.</p> -->
                     <a href="https://github.com/VivianMak/pose_graph_optimization_for_SLAM" class="repo-link" target="_blank">
                         <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
                         VivianMak/pose_graph_optimization_for_SLAM
@@ -114,17 +111,6 @@
                         </p>
                         <p>
                             Each iteration derives an error function for every adjacent pair of nodes, linearizes it with a first-order Taylor expansion around the current estimate, and computes the Jacobian of that error. These assemble into the global linear system <strong>H&Delta;x = &minus;b</strong>, which is solved for the pose update &Delta;x and applied across all nodes, repeating until the trajectory converges.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="project-chapter">
-                <div class="content-grid">
-                    <div class="project-text-block">
-                        <h2>05 / Next Steps</h2>
-                        <p>
-                            The immediate next step is visualizing the map reconstructed from laser-scan data to make remaining bugs easier to spot. Longer term, the goal is real-time SLAM &mdash; one promising direction is pre-allocating the exact memory the pipeline needs up front and running components concurrently to avoid cache overload.
                         </p>
                     </div>
                 </div>
