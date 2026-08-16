@@ -14,6 +14,7 @@
 }
 
 .project-hero-text {
+    width: 100%;
     max-width: 1400px;
 }
 
@@ -136,18 +137,18 @@
 .media-grid img:only-child,
 .media-grid video:only-child {
     flex: 1 1 auto;
+    width: 100%;
     height: auto;
 }
 
-/* Multi-image rows: share one height so mixing portrait/landscape shots
-   doesn't leave one image squeezed much smaller than the others */
+/* Multi-image rows: js/media-grid.js sets flex-grow to each image's aspect
+   ratio, so widths vary by shape and the whole row lands on one height.
+   Without JS this falls back to equal widths, still uncropped. */
 .media-grid img:not(:only-child),
 .media-grid video:not(:only-child) {
     flex: 1 1 0;
     width: 100%;
-    height: clamp(200px, 26vw, 320px);
-    object-fit: contain;
-    background-color: var(--dark-gray, #1e1e1e);
+    height: auto;
 }
 
 .full-media {
@@ -219,4 +220,38 @@
         height: auto;      /* stacked single-column: show natural aspect ratio, no cropping */
         object-fit: initial;
     }
+}
+
+.repo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--black);
+    background: transparent;
+    color: var(--black);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 13px;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.repo-link svg {
+    fill: currentColor;
+}
+
+.repo-link:hover {
+    background: var(--black);
+    color: var(--white);
+    transform: translateY(-1px);
+}
+
+.repo-link:active {
+    transform: translateY(0);
+}
+
+.repo-link:focus-visible {
+    outline: 2px solid var(--black);
+    outline-offset: 3px;
 }
