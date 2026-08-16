@@ -69,7 +69,13 @@
 						<p>
 							This algorithm provides a maintained estimate of pose without needing an exact analytical model of the environment without needing an exact analytical model of the environment.
 						</p>
+                    </div>
+                </div>
+            </section>
 
+			<section class="project-chapter">
+                <div class="content-grid">
+                    <div class="project-text-block">
 						<h2>02 / The Algorithm</h2>
 
 						<ol>
@@ -80,14 +86,9 @@
                             <li><strong>Resample (Iterate)</strong> — Redraw the particle cloud, favoring high-weight particles and discarding unlikely ones. The cloud then repeats from step 2 as the robot keeps moving, converging tighter around the true pose over time.</li>
 							<li><strong>Converge</strong> — After several iterations, the particles converge to a small area to estimate where the robot truly is.</li>
 						</ol>
-
-                        <div class="media-grid">
+                        <!-- <div class="media-grid">
                             <img src="images/localization_03.png" alt="Particle filter localization on a map">
-                        </div>
-
-                        <p>
-                            After several iterations, the particles converge to a small area to estimate where the robot is.
-                        </p>
+                        </div> -->
                     </div>
                 </div>
             </section>
