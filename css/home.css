@@ -51,7 +51,7 @@
 
 .hero-image img {
     width: 80%;
-    border-radius: 12px;
+    border-radius: 5px;
     filter: none;
 }
 
@@ -88,6 +88,7 @@
     aspect-ratio: 4 / 3;
     background-color: var(--dark-gray);    /* Background for when image dims */
     margin-bottom: 20px;
+    border-radius: 5px;
     overflow: hidden;          /* Keeps zoom and overlay within corners */
 }
 
@@ -137,6 +138,7 @@
 }
 
 .project-card-overlay-text p {
+    font-family: 'Inter', sans-serif;
     font-size: 1rem;
     line-height: 1.6;
     margin-bottom: 0;

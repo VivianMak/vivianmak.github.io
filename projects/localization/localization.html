@@ -31,7 +31,7 @@
         <div class="section-container">
             <div class="project-hero-flex">
                 <div class="project-hero-text">
-                    <h1>Robot Localization: A Particle Filter Approach</h1>
+                    <h1>Robot Localization</h1>
 
                     <div class="media-grid">
                         <img src="images/localization_02.gif" alt="GIF generated from Rviz2 running the robot localizer on a map">
@@ -62,14 +62,14 @@
                         <p>
                             In this process I:
                         </p>
-                        <ul>
+                        <ol>
                             <li>Initialize a particle cloud based on initial 2D pose estimate</li>
                             <li>Update particle pose with robot odometry data with Gaussian noise</li>
                             <li>Update particle weights with laser scan and based on error of closest mapped object</li>
                             <li>Normalize particle weights to sum to one</li>
                             <li>Update estimated robot pose with mean particle weights</li>
                             <li>Resample particles using a grid style way of taking the mean</li>
-                        </ul>
+                        </ol>
 
                         <div class="media-grid">
                             <img src="images/localization_03.png" alt="Particle filter localization on a map">

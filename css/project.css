@@ -97,6 +97,18 @@
     margin-bottom: 20px;
 }
 
+.project-text-block ol {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--gray);
+    margin-bottom: 20px;
+    padding-left: 1.2em;
+}
+
+.project-text-block ol li {
+    margin-bottom: 8px;
+}
+
 
 
 /* Media grid (inset narrower than the text column, even for multi-image rows) */
@@ -134,7 +146,8 @@
     flex: 1 1 0;
     width: 100%;
     height: clamp(200px, 26vw, 320px);
-    object-fit: cover;
+    object-fit: contain;
+    background-color: var(--dark-gray, #1e1e1e);
 }
 
 .full-media {
