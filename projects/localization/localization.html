@@ -38,7 +38,7 @@
                     </div>
 
                     <p>
-                        Implement a particle filter algorithm to perform state estimation and localization to determine the robot's true position on a map.
+                        A particle filter algorithm to perform state estimation and localization to determine the robot's true position on a map.
                     </p>
 
                     <a href="https://github.com/VivianMak/robot_localization" class="repo-link" target="_blank">
@@ -61,16 +61,25 @@
                     <div class="project-text-block">
                         <h2>01 / Particle Filter</h2>
                         <p>
-                            In this process I:
-                        </p>
-                        <ol>
-                            <li>Initialize a particle cloud based on initial 2D pose estimate</li>
-                            <li>Update particle pose with robot odometry data with Gaussian noise</li>
-                            <li>Update particle weights with laser scan and based on error of closest mapped object</li>
-                            <li>Normalize particle weights to sum to one</li>
-                            <li>Update estimated robot pose with mean particle weights</li>
-                            <li>Resample particles using a grid style way of taking the mean</li>
-                        </ol>
+							Given a known map of an environment, the robot uses its wheel odometry and LiDAR scans to figure out where it actually is on that map. The LiDAR sensor accomodates for the fact that odometry readings drift and become unreliable over time.
+						</p>
+						<p>
+							I am using a particle filter as a way to estimate an unknown state by tracking a particle swarm of “guesses”. Each particle, a hypothesis of the robot’s true location, is weighed on the overlapping distance of the LiDAR scans. Good matches are weighted higher, bad matches are weighted less, and resampled at each iteration until the points converge around the true location. 
+						</p>
+						<p>
+							This algorithm provides a maintained estimate of pose without needing an exact analytical model of the environment without needing an exact analytical model of the environment.
+						</p>
+
+						<h2>02 / The Algorithm</h2>
+
+						<ol>
+							<li><strong>Initialize</strong> — Scatter a cloud of particles (guesses) across possible robot poses, each with equal weight. Represents total initial uncertainty about where the robot is.</li>
+							<li><strong>Predict (Motion Update)</strong> — Move every particle by the robot's measured odometry (Δx, Δy, Δθ), plus a bit of random noise. Noise accounts for the fact that wheels slip and odometry isn't perfectly accurate.</li>
+							<li><strong>Correct (Observation Update)</strong> — Compare each particle's predicted LiDAR scan against the actual scan and the known map. Particles whose predicted view matches reality get a higher weight; poor matches get downweighted.</li>
+                            <li><strong>Estimate (Pose Update)</strong> — Combine the highest-weighted particles (e.g., take their median) to produce the robot's single best pose estimate. This is the number the robot actually uses to know "where am I."</li>
+                            <li><strong>Resample (Iterate)</strong> — Redraw the particle cloud, favoring high-weight particles and discarding unlikely ones. The cloud then repeats from step 2 as the robot keeps moving, converging tighter around the true pose over time.</li>
+							<li><strong>Converge</strong> — After several iterations, the particles converge to a small area to estimate where the robot truly is.</li>
+						</ol>
 
                         <div class="media-grid">
                             <img src="images/localization_03.png" alt="Particle filter localization on a map">
