@@ -34,7 +34,7 @@
                     <h1>Pose Graph Optimization</h1>
 
                     <div class="media-grid">
-                        <img src="../../assets/pose_graph.svg" alt="Pose graph optimization: raw drifted odometry vs. optimized trajectory">
+                        <img src="../../assets/pose_graph2.png" alt="Pose graph optimization: raw drifted odometry vs. optimized trajectory">
                     </div>
 
                     <p>
@@ -98,6 +98,9 @@
                         <p>
                             We implemented the point-to-plane variant: compute normals on the destination scan, seed the source scan with the odometry estimate, then repeatedly match each source point to its nearest destination neighbor, measure the error along that point's normal, and solve a least-squares system for the transform update &mdash; iterating until convergence.
                         </p>
+						<div class="media-grid">
+                            <img src="images/recording.png" alt="TurtleBot 4 driving in a square in simulation, used for data gathering">
+                        </div>
                     </div>
                 </div>
             </section>
@@ -112,6 +115,9 @@
                         <p>
                             Each iteration derives an error function for every adjacent pair of nodes, linearizes it with a first-order Taylor expansion around the current estimate, and computes the Jacobian of that error. These assemble into the global linear system <strong>H&Delta;x = &minus;b</strong>, which is solved for the pose update &Delta;x and applied across all nodes, repeating until the trajectory converges.
                         </p>
+						<div class="media-grid">
+                            <img src="images/optimizer.png" alt="TurtleBot 4 driving in a square in simulation, used for data gathering">
+                        </div>
                     </div>
                 </div>
             </section>
