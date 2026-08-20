@@ -8,6 +8,7 @@
     --dark-gray-tint: rgba(30, 30, 30, 0.7);
     --border: rgba(0,0,0,0.1);
     --padding-global: 5vw;
+    --link: #4C72B0;
 }
 
 * {
@@ -34,4 +35,12 @@ p {
     background-color: transparent;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: var(--link);
+}
+
+a:visited {
+    color: var(--link);
 }
