@@ -156,6 +156,14 @@
     max-width: 500px;
 }
 
+/* Modifier for a single image that should render at its native size instead
+   of stretching to fill the row (still capped by max-width: 100% so it never
+   overflows on small screens) */
+.media-grid.media-grid--native img:only-child {
+    width: auto;
+    flex: 0 1 auto;
+}
+
 .full-media {
     max-width: 1400px;
     margin: 60px auto;
