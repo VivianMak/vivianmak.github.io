@@ -151,6 +151,11 @@
     height: auto;
 }
 
+/* Modifier for rows that shouldn't stretch full-width (e.g. smaller diagrams) */
+.media-grid.media-grid--compact {
+    max-width: 500px;
+}
+
 .full-media {
     max-width: 1400px;
     margin: 60px auto;

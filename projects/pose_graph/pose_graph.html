@@ -33,7 +33,7 @@
                 <div class="project-hero-text">
                     <h1>Pose Graph Optimization</h1>
 
-                    <div class="media-grid">
+                    <div class="media-grid media-grid--compact">
                         <img src="../../assets/pose_graph2.png" width="500" alt="Pose graph optimization: raw drifted odometry vs. optimized trajectory">
                     </div>
 
@@ -67,7 +67,7 @@
                             The simulated odometry and LiDAR are effectively perfect, so we injected artificial drift &mdash; small, accumulating, normally distributed offsets added to x and y at each measurement &mdash; to give the optimizer realistic error to correct.
                         </p>
 
-                        <div class="media-grid">
+                        <div class="media-grid media-grid--compact">
                             <img src="images/pose_graph_02.gif" alt="TurtleBot 4 driving in a square in simulation, used for data gathering">
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                         <p>
                             We implemented the point-to-plane variant: compute normals on the destination scan, seed the source scan with the odometry estimate, then repeatedly match each source point to its nearest destination neighbor, measure the error along that point's normal, and solve a least-squares system for the transform update &mdash; iterating until convergence.
                         </p>
-						<div class="media-grid">
+						<div class="media-grid media-grid--compact">
                             <img src="images/recording.png" width="400" alt="">
                         </div>
                     </div>
@@ -115,7 +115,7 @@
                         <p>
                             Each iteration derives an error function for every adjacent pair of nodes, linearizes it with a first-order Taylor expansion around the current estimate, and computes the Jacobian of that error. These assemble into the global linear system <strong>H&Delta;x = &minus;b</strong>, which is solved for the pose update &Delta;x and applied across all nodes, repeating until the trajectory converges.
                         </p>
-						<div class="media-grid">
+						<div class="media-grid media-grid--compact">
                             <img src="images/optimizer.png" width="400" alt="">
                         </div>
                     </div>
