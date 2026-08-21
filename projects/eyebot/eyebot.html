@@ -47,10 +47,37 @@
 
         <div class="section-container">
 
+			<section class="project-chapter">
+                <div class="content-grid">
+                    <div class="project-text-block">
+                        <h2>01 / Kalman Filtering for Face Tracking</h2>
+                        <p>
+                            Raw facial landmark detections are noisy frame-to-frame, especially during fast head movement or brief occlusion. 
+							
+							I designed a Kalman filter to smooth the tracked face position over time, using a constant-velocity motion model to predict pose and correct with new measurements.
+                        </p>
+                        <p>
+                            
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+			<section class="project-chapter">
+                <div class="content-grid">
+                    <div class="project-text-block">
+                        <h2>02 / Monocular Eye Tests</h2>
+                        <p>
+                            um
+                        </p>
+                    </div>
+                </div>
+            </section>
+
             <section class="project-chapter">
                 <div class="content-grid">
                     <div class="project-text-block">
-                        <h2>01 / Glasses Detection</h2>
+                        <h2>03 / Glasses Detection</h2>
                         <p>
                             To personalize downstream perception, the first step in the pipeline was determining whether a user was wearing glasses. I built a classifier that operates on cropped eye and brow regions from each frame, using facial landmarks to normalize for head pose and distance from the camera before classification.
                         </p>
@@ -62,19 +89,7 @@
             </section>
 
 
-            <section class="project-chapter">
-                <div class="content-grid">
-                    <div class="project-text-block">
-                        <h2>02 / Kalman Filtering for Face Tracking</h2>
-                        <p>
-                            Raw facial landmark detections are noisy frame-to-frame, especially during fast head movement or brief occlusion. I implemented a Kalman filter to smooth the tracked face position and keypoints over time, using a constant-velocity motion model to predict each frame's pose and correcting with every new detection.
-                        </p>
-                        <p>
-                            This reduced jitter in the tracked region and kept tracking stable through short detection dropouts, which was critical for maintaining a consistent glasses-detection crop from frame to frame.
-                        </p>
-                    </div>
-                </div>
-            </section>
+            
 
         </div>
 
