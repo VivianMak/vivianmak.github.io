@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="../../css/project.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+	<!-- Include KaTeX CSS and JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <!-- Automatic rendering extension -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '\\[', right: '\\]', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false}
+        ]});"></script>
 </head>
 <body>
 
@@ -32,10 +43,14 @@
             <div class="project-hero-flex">
                 <div class="project-hero-text">
                     <h1>Eyebot</h1>
-
-                    <p>
-                        Here are some of my contributions as an R&amp;D Software Intern at Eyebot.
+					<p>
+                        Here are some of my contributions as an R&amp;D Software Intern at <a href="https://www.eyebot.co/" target="_blank">Eyebot</a>.
                     </p>
+
+					<div class="media-grid">
+                        <img src="images/scan.png" alt="scan overlay my eyes">
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -50,15 +65,88 @@
 			<section class="project-chapter">
                 <div class="content-grid">
                     <div class="project-text-block">
-                        <h2>01 / Kalman Filtering for Face Tracking</h2>
+                        <h2>01 / Kalman Filtering for Session Face Tracking</h2>
                         <p>
-                            Raw facial landmark detections are noisy frame-to-frame, especially during fast head movement or brief occlusion. 
-							
-							I designed a Kalman filter to smooth the tracked face position over time, using a constant-velocity motion model to predict pose and correct with new measurements.
+                            Raw facial landmark detections are noisy frame-to-frame, especially during fast head movement or brief occlusion.
+                            <u><strong>
+								I designed a state-tracking Kalman filter to smooth the tracked face position over time, using a constant-velocity motion model to predict pose and correct with new measurements.
+							</strong></u>
+                        </p>
+
+						<h3>State Machine</h3>
+
+						<p>
+							During a vision test, the system aims a mirror to meet the user's constantly moving gaze. Rather than following the eyes directly and having the motors chase every glance, the state machine provides a smooth estimate of the user's velocity and the sensor's drift, and a two-state controller decides when to act on it. 
+							The first state waits for a tuned stability threshold before proposing a new motor position, and the second state holds until the user drifts away from a tolerance band to trigger recalculation. 
+							That band is deliberately asymmetric: wide for downward movement, since looking down is almost always a passing glance, and tight for upward movement, since looking up means returning attention to the test. With any new motor commands, the controller eases into position to prevent snappy movements and to absorb sudden unpredicted movement.
+						</p>
+						<!-- <p>
+							The result is a mirror that tells the difference between a glance and a genuine reposition.
+						</p> -->
+
+						<h3>Kalman Filter</h3>
+
+                        <p>
+                            The filter tracks depth \(d\) and eye position \(e\) along with their rates. Since the process and noise models are block-diagonal in \(d \perp e\),
+                            the 4-D filter is numerically identical to one independent 2-D filter per signal, so everything below is written per signal with state \(x = \begin{bmatrix} p & \dot{p} \end{bmatrix}^{\top}\).
+                        </p>
+
+                        <h3>Predict</h3>
+                        <p>
+                            \[
+                            \hat{x}_{k \mid k-1} = F_k \hat{x}_{k-1 \mid k-1},
+                            \qquad
+                            P_{k \mid k-1} = F_k P_{k-1 \mid k-1} F_k^{\top} + Q_k
+                            \]
                         </p>
                         <p>
-                            
+                            \[
+                            F_k = \begin{bmatrix} 1 & \Delta t_k \\ 0 & 1 \end{bmatrix},
+                            \qquad
+                            Q_k = q \begin{bmatrix} \tfrac{1}{3}\Delta t_k^{3} & \tfrac{1}{2}\Delta t_k^{2} \\ \tfrac{1}{2}\Delta t_k^{2} & \Delta t_k \end{bmatrix}
+                            \]
                         </p>
+                        <p>
+                            There is no control term &mdash; nothing the system does drives the user&rsquo;s head. \(\Delta t_k\) is the <em>measured</em> frame interval rather than a nominal frame rate, and
+                            \(Q_k\) is a discretized white-noise-acceleration model of how hard the head can accelerate between frames
+                            (\(q_d = 10\ \text{mm}^2/\text{s}^3\), \(q_e = 0.5\ \text{s}^{-3}\)).
+                        </p>
+
+                        <h3>Update</h3>
+                        <p>
+                            \[
+                            K_k = P_{k \mid k-1} H^{\top} S_k^{-1},
+                            \qquad
+                            S_k = H P_{k \mid k-1} H^{\top} + R
+                            \]
+                        </p>
+                        <p>
+                            \[
+                            \hat{x}_{k \mid k} = \hat{x}_{k \mid k-1} + K_k \underbrace{\left( z_k - H \hat{x}_{k \mid k-1} \right)}_{\text{innovation } y_k},
+                            \qquad
+                            P_{k \mid k} = \left( I - K_k H \right) P_{k \mid k-1}
+                            \]
+                        </p>
+                        <p>
+                            Only position is measured (\(H = \begin{bmatrix} 1 & 0 \end{bmatrix}\)); velocity is never observed directly and is inferred through the position&ndash;rate coupling in \(F_k\).
+                            The measurement noise \(R\) is constant, characterized once from a static recording of the sensor
+                            (\(\sigma_d \approx 5\ \text{mm}\), \(\sigma_e \approx 0.158\)). The gain \(K_k\) is the self-adjusting trust ratio between prediction and measurement,
+                            which is what let me drop the hand-tuned smoothing constant the tracker used before.
+                        </p>
+                        <p>
+                            On the first valid measurement the filter initializes to \(\hat{x}_0 = \begin{bmatrix} z_0 & 0 \end{bmatrix}^{\top}\) with a deliberately large velocity variance,
+                            encoding low initial confidence so the first few frames dominate the rate estimate.
+                        </p>
+						<p>
+							<u><strong>
+								The result of a state machine that utilizes the kalman filter, is a mirror that tells the difference between a glance and a genuine gaze reposition.
+							</strong></u>
+						</p>
+
+						<div class="media-grid">
+							<img src="images/kalman_position.png" alt="plotted kalman filter session">
+						</div>
+						
                     </div>
                 </div>
             </section>
@@ -79,11 +167,15 @@
                     <div class="project-text-block">
                         <h2>03 / Glasses Detection</h2>
                         <p>
-                            To personalize downstream perception, the first step in the pipeline was determining whether a user was wearing glasses. I built a classifier that operates on cropped eye and brow regions from each frame, using facial landmarks to normalize for head pose and distance from the camera before classification.
+                            Halfway through a vision test, glasses users are prompted to remove their glasses, otherwise the session would become invalid.
+							<u><strong>I trained a vision transformer classifier model to detect glasses-users.</strong></u>
                         </p>
                         <p>
-                            Because glasses vary widely in frame shape, thickness, and lens reflectivity, most of the effort went into curating a training set that captured a range of lighting conditions and glare, which were the leading cause of false negatives.
+                            Because glasses vary widely in frame shape, thickness, and lens reflectivity, curating a training set that captured a range of lighting conditions and glare was critical.
                         </p>
+						<div class="media-grid">
+							<img src="images/glasses_sweep_plot.png" alt="all trained models plotted">
+						</div>
                     </div>
                 </div>
             </section>

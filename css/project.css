@@ -110,6 +110,49 @@
     margin-bottom: 8px;
 }
 
+.project-text-block ul {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--gray);
+    margin-bottom: 20px;
+    padding-left: 1.2em;
+}
+
+.project-text-block ul li {
+    margin-bottom: 8px;
+}
+
+/* Paragraphs nested inside a list item shouldn't double the list spacing */
+.project-text-block li p {
+    margin-bottom: 8px;
+}
+
+.project-text-block h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--dark-gray);
+    font-weight: 800;
+    margin-top: 48px;
+    margin-bottom: 16px;
+}
+
+.project-text-block h4 {
+    font-size: 1rem;
+    color: var(--dark-gray);
+    font-weight: 700;
+    margin-top: 32px;
+    margin-bottom: 12px;
+}
+
+/* Display math: give it room and let long matrices scroll instead of overflowing */
+.project-text-block .katex-display {
+    margin: 20px 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 4px 0;
+}
+
 
 
 /* Media grid (inset narrower than the text column, even for multi-image rows) */
