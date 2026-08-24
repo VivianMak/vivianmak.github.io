@@ -139,7 +139,7 @@
                         </p>
 						<p>
 							<u><strong>
-								The result of a state machine that utilizes the kalman filter, is a mirror that tells the difference between a glance and a genuine gaze reposition.
+								This kalman filter state machine results in a mirror that tells the difference between a glance and a genuine gaze reposition.
 							</strong></u>
 						</p>
 
@@ -171,11 +171,33 @@
 							<u><strong>I trained a vision transformer classifier model to detect glasses-users.</strong></u>
                         </p>
                         <p>
-                            Because glasses vary widely in frame shape, thickness, and lens reflectivity, curating a training set that captured a range of lighting conditions and glare was critical.
+                            To ensure a generaizable model, I curated and labeled an internal diverse training set capturing a range of skin tones, lighting, environments, and glasses thicknesss (thin/thick/no frame, tinted, etc.).
+							I split the 5133 image dataset into Training (55%), Validation (15%), and Testing (30%). Running the base model against the testing subset yielded: accuracy–0.72, precision–0.73, recall–0.39, f1–0.5.
                         </p>
+						<p>
+							To improve the base model, I trained a series of model by performing a parameter sweep across the learning rates, batch size, optimizers, and epoch.
+							The best model yielded: accuracy–0.95, precision–0.91, recall–0.97, f1–0.94. (See plotted models below) 
+						</p>
+						<div class="media-grid media-grid--compact">
+							<!-- <img src="images/glasses_sweep_plot.png" alt="all trained models plotted"> -->
+							<img src="images/model_confusion_matrix.png" alt="confusion matrix">
+						</div>
+
 						<div class="media-grid">
 							<img src="images/glasses_sweep_plot.png" alt="all trained models plotted">
+							<!-- <img src="images/model_confusion_matrix.png" alt="confusion matrix"> -->
 						</div>
+						<p>
+							Upon further testing on hardware, I noticed a high inference latency time. The system requires an inference quickly to reduce session lag on the user end.
+							I optimized this by training my own model from scratch with a small vision transformer. The new models performed similarly to the best models from earlier, but the median inference time reduced by 4.6 times (from 1656ms to 350ms).
+						</p>
+
+						<p>
+							<u><strong>
+								I built a new feature to the vision test workflow to classify users wearing glasses by training and optimizing a vision transformer model.
+							</strong></u>
+						</p>
+
                     </div>
                 </div>
             </section>
